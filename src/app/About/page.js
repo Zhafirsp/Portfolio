@@ -8,7 +8,6 @@ import SliderHeader from "../../components/SliderHeader";
 import HeaderAbout from "../../components/Header/about";
 import Vision from "../../components/Vision";
 
-
 export default function About() {
   const [showContent, setShowContent] = useState(false);
 
