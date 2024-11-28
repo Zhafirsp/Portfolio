@@ -1,0 +1,190 @@
+@font-face {
+  font-family: "me2";
+  src: url("../../../public/fonts/me2.woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.contact {
+  background-color: #252422;
+  .landing {
+    position: relative;
+    display: flex;
+    justify-content: center; /* Memusatkan secara horizontal */
+    height: 60vh; /* Menggunakan tinggi penuh dari layar */
+    overflow: hidden;
+
+    .sliderContainer {
+      background-color: #252422;
+      position: absolute;
+      top: calc(100vh - 800px);
+      left: 0; /* Membuat teks tetap dimulai dari kiri */
+    }
+
+    .slider {
+      position: relative;
+      white-space: nowrap;
+      text-transform: uppercase;
+      font-family: "me2", serif !important;
+    }
+
+    .slider p {
+      position: relative;
+      margin: 0px;
+      color: #fffcf2;
+      font-size: 372px;
+      font-weight: 500;
+      padding-right: 50px;
+    }
+
+    .slider p:nth-of-type(2) {
+      position: absolute;
+      left: 100%;
+      top: 0;
+    }
+
+    .description {
+      position: absolute;
+      top: 35%;
+      left: 65%;
+      color: #fffcf2;
+      font-size: 24px;
+      font-weight: 300;
+      p {
+        margin: 0px;
+        margin-bottom: 10px;
+      }
+      svg {
+        transform: scale(2);
+        margin-bottom: 100px;
+      }
+    }
+  }
+
+  .socials {
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+
+  .info {
+    display: flex;
+    justify-content: space-between;
+    margin: 60vh 30px 1vh;
+    padding: 20px;
+    div {
+      display: flex;
+      gap: 50px;
+      align-items: flex-end;
+      p,
+      h3 {
+        margin: -10px;
+        padding: 2.5px;
+        color: #fffcf2;
+      }
+      .scrollToTop {
+        cursor: pointer;
+        &::after {
+          content: "";
+          width: 0%;
+          height: 1px;
+          background-color: #fffcf2;
+          display: block;
+          margin-top: 2px;
+          position: relative;
+          left: 50%;
+          transform: translateX(-50%);
+          transition: width 0.2s linear;
+        }
+        &:hover {
+          &::after {
+            width: 100%;
+          }
+        }
+      }
+      span {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      h3 {
+        cursor: default;
+        font-weight: 300;
+        font-size: 1em;
+      }
+    }
+  }
+
+  .hey {
+    left: 2%;
+    top: 47%;
+    position: absolute;
+    background-color: #eb5e28;
+    padding: 0px 10px;
+  }
+  .hey2 {
+    left: 3%;
+    top: 49.2%;
+    position: absolute;
+    background-color: #eb5e28;
+    padding: 0px 10px;
+  }
+
+  .emailForm {
+    position: absolute;
+    left: 2%;
+    top: 80%;
+    color: #fffcf2;
+
+    .emailText {
+      font-size: 18px;
+      line-height: 22px;
+      text-transform: uppercase;
+    }
+
+    .email {
+      font-size: 54px;
+      font-weight: 800;
+      margin-top: 0px;
+    }
+  }
+
+  .aboutImage {
+    position: absolute;
+    left: 80%;
+    top: 80%;
+    transition: opacity 0.3s ease; /* Smooth fade-in/out for the image */
+  }
+
+  .hoverText {
+    position: absolute;
+    top: 84%; /* Adjust text position */
+    left: 78%;
+    transform: translateX(100%); /* Initially position the text off-screen */
+    color: #252422;
+    font-size: 16px;
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+    background-color: #eb5e28;
+    padding: 0px 10px;
+  }
+
+  .aboutImage:hover + .hoverText {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0); /* Move the text into view */
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .slider p {
+    position: relative;
+    margin: 0px;
+    color: #fffcf2;
+    font-size: 210px !important;
+    font-weight: 500;
+    padding-right: 50px;
+  }
+}

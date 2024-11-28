@@ -1,0 +1,154 @@
+@font-face {
+  font-family: "me2";
+  src: url("../../../public/fonts/me2.woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.contact {
+  color: #fffcf2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #252422;
+  position: relative;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  .body {
+    padding-top: 200px;
+    width: 100%;
+    max-width: 1800px;
+    background-color: #252422;
+
+    .title {
+      border-bottom: 1px solid rgb(134, 134, 134);
+      padding-bottom: 100px;
+      position: relative;
+      // margin-left: 200px;
+      // margin-right: 200px;
+      span {
+        display: flex;
+        align-items: center;
+        .imageContainer {
+          width: 100px;
+          height: 100px;
+          position: relative;
+          border-radius: 50%;
+          overflow: hidden;
+
+          img {
+            object-fit: cover;
+          }
+        }
+      }
+      h2 {
+        font-size: 190px;
+        margin: 0px;
+        font-weight: 500;
+        text-transform: uppercase;
+        font-family: "me2", serif !important;
+      }
+      h3 {
+        font-size: 60px;
+        margin: 0px;
+        font-weight: 300;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        font-family: "me2", serif !important;
+      }
+      .buttonContainer {
+        position: absolute;
+        left: calc(100% - 400px);
+        top: calc(100% - 75px);
+      }
+      .button {
+        width: 180px;
+        height: 180px;
+        background-color: #252422;
+        color: #fffcf2;
+        border: 1px solid rgb(136, 136, 136);
+        border-radius: 50%;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        p {
+          margin: 0px;
+          font-size: 16px;
+          font-weight: 300;
+          z-index: 2;
+          position: relative;
+        }
+      }
+      svg {
+        position: absolute;
+        top: 30%;
+        left: 100%;
+      }
+    }
+    .nav {
+      display: flex;
+      gap: 20px;
+      margin-top: 100px;
+      // margin-left: 200px;
+      // margin-right: 200px;
+    }
+    .info {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 200px;
+      padding: 20px;
+      div {
+        display: flex;
+        gap: 50px;
+        align-items: flex-end;
+        p,
+        h3 {
+          margin: -10px;
+          padding: 2.5px;
+        }
+        .scrollToTop {
+          cursor: pointer;
+          &::after {
+            content: "";
+            width: 0%;
+            height: 1px;
+            background-color: #fffcf2;
+            display: block;
+            margin-top: 2px;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.2s linear;
+          }
+          &:hover {
+            &::after {
+              width: 100%;
+            }
+          }
+        }
+        span {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+        }
+        h3 {
+          color: #ccc5b9;
+          cursor: default;
+          font-weight: 300;
+          font-size: 1em;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .info {
+    margin-bottom: 50px;
+  }
+}

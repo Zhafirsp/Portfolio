@@ -1,0 +1,149 @@
+@font-face {
+  font-family: "me2";
+  src: url("../../../../public/fonts/me2.woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.landing {
+  position: relative;
+  display: flex;
+  justify-content: center; /* Memusatkan secara horizontal */
+  height: 95vh; /* Menggunakan tinggi penuh dari layar */
+  background-color: #fffcf2;
+  overflow: hidden;
+
+  /* style.module.scss */
+  .imageContainer {
+    position: relative;
+    display: inline-block;
+    width: 350px; /* Make sure it takes up the full width of the parent container */
+    height: 350px; /* Take full height to position elements correctly */
+    top: 58%;
+    left: -40%;
+  }
+
+  .aboutImage {
+    position: absolute;
+    border-radius: 50%; /* Optional: To make the image circular */
+  }
+
+  .textImage {
+    position: absolute;
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    top: 5%;
+    right: -10%;
+    background-color: #eb5e28;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+  }
+
+  .textImage2 {
+    position: absolute;
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    top: 13%;
+    right: -20%;
+    background-color: #eb5e28;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+  }
+
+  .imageContainer:hover .textImage {
+    opacity: 1; /* Show the text when the image is hovered */
+  }
+
+  .textContainer {
+    top: 13%;
+    position: absolute;
+    left: 2%;
+  }
+
+  .text {
+    position: relative;
+    white-space: nowrap;
+    // text-transform: uppercase;
+    font-family: "me2", serif !important;
+  }
+
+  .text p {
+    position: relative;
+    margin: 0px;
+    color: #252422;
+    font-size: 280px;
+    font-weight: 500;
+    line-height: 270px;
+    padding-right: 50px;
+  }
+
+  .descContainer {
+    position: absolute;
+    top: 78%;
+    left: 70%;
+    max-width: 500px;
+  }
+
+  .description {
+    color: #252422;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    text-transform: uppercase;
+    text-align: right;
+    p {
+      margin: 0px;
+      margin-bottom: 10px;
+    }
+    .location {
+      font-size: 12px;
+      margin-top: 5vh;
+    }
+  }
+}
+
+.aboutImage {
+  position: absolute;
+  left: 2%;
+  top: 55%;
+  transition: opacity 0.3s ease; /* Smooth fade-in/out for the image */
+}
+
+.hoverText {
+  position: absolute;
+  top: 60%; /* Adjust text position */
+  left: 15%;
+  transform: translateX(100%); /* Initially position the text off-screen */
+  color: #252422;
+  font-size: 16px;
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+  background-color: #eb5e28;
+  padding: 0px 10px;
+}
+
+.aboutImage:hover + .hoverText {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0); /* Move the text into view */
+}
+
+@media screen and (max-width: 1440px) {
+  .text p {
+    position: relative;
+    margin: 0px;
+    color: #fffcf2;
+    font-size: 210px !important;
+    font-weight: 500;
+    padding-right: 50px;
+  }
+}
