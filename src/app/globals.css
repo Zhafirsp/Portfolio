@@ -4,3 +4,13 @@ body {
   cursor: wait;
   background-color: #fffcf2;
 }
+
+body.preloading {
+  overflow: hidden;
+  cursor: wait; /* Menandakan loading */
+}
+
+body.loaded {
+  overflow: auto; /* Izinkan scroll setelah preloader selesai */
+  cursor: default;
+}

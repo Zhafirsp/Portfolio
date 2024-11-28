@@ -7,12 +7,21 @@ import { opacity, slideUp } from "./anim";
 const words = [
   "Halo",
   "Hello",
-  "やあ",
-  "Guten tag",
+  "Hola",
   "Bonjour",
+  "Olá",
   "Ciao",
-  "Olà",
-  "Hallå",
+  "Hola",
+  "Hej",
+  "Здравствуйте",
+  "你好",
+  "こんにちは",
+  "안녕하세요",
+  "नमस्ते",
+  "Merhaba",
+  "السلام عليكم",
+  "سلام",
+  "Ahoj",
 ];
 
 export default function Index() {
@@ -45,11 +54,11 @@ export default function Index() {
   const curve = {
     initial: {
       d: initialPath,
-      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1] },
+      transition: { duration: 1.7, ease: [0.76, 0, 0.24, 1] },
     },
     exit: {
       d: targetPath,
-      transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: 0.3 },
+      transition: { duration: 1.7, ease: [0.76, 0, 0.24, 1], delay: 1.3 },
     },
   };
 

@@ -10,7 +10,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10000; /* Ensure this is above the footer and all page content */
+  z-index: 10; /* Ensure this is above the footer and all page content */
 }
 
 .pageContent {
