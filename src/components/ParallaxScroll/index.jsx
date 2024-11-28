@@ -21,7 +21,7 @@ const images = [
   "market_day_2.jpg",
 ];
 
-export default function index() {
+export default function ParallaxScroll() {
   const sliderProject = useRef(null);
   const gallery = useRef(null);
   const [dimension, setDimension] = useState({ width: 0, height: 0 });

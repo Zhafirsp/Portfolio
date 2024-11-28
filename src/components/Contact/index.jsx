@@ -7,7 +7,7 @@ import { useScroll, motion, useTransform, useSpring } from "framer-motion";
 import Magnetic from "../../common/Magnetic";
 import Link from "next/link";
 
-export default function index() {
+export default function Contact() {
   const [time, setTime] = useState("");
   const scrollToTop = () => {
     window.scrollTo({

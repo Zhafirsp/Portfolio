@@ -30,14 +30,14 @@ export default function HeaderAbout() {
       <div
         className={`${styles.hoverText} ${isHovered ? styles.showText : ""}`}
       >
-        Hi it's me cowwie
+        Hi it&#39;s me cowwie
       </div>
 
       <div className={styles.descContainer}>
         <div data-scroll data-scroll-speed={0.1} className={styles.description}>
           <p>
-            I’m zhafir. a frontend engineer, web developer and ui/ux designer
-            based in the rain city, more specifically planet earth 🌎 *
+            I&#39;m zhafir. a frontend engineer, web developer and ui/ux
+            designer based in the rain city, more specifically planet earth 🌎 *
           </p>
           <p className={styles.location}>* Currently in Bandung, Indonesia.</p>
         </div>

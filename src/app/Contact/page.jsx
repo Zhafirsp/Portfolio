@@ -117,7 +117,7 @@ export default function ContactPage() {
               isHovered ? styles.showText : ""
             }`}
           >
-            Hi it's me cowwie
+            Hi it&#39;s me cowwie
           </div>
 
           <div className={styles.info}>
