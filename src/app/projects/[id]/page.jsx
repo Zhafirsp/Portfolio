@@ -113,13 +113,15 @@ export default function ProjectDetail() {
   // }, []);
 
   useLayoutEffect(() => {
-    const slider = sliderProject.current;
+    if (!sliderProject.current) return;
 
-    if (!slider) return;
+    const slider = sliderProject.current;
 
     // Dapatkan lebar layar dan lebar satu elemen teks
     const screenWidth = window.innerWidth;
-    const elementWidth = slider.children[0].offsetWidth;
+    const elementWidth = slider.children[0]?.offsetWidth;
+
+    if (!elementWidth) return; // Pastikan elemen memiliki lebar yang valid
 
     // Hitung jumlah elemen yang dibutuhkan untuk memenuhi layar
     const clonesNeeded = Math.ceil(screenWidth / elementWidth);
@@ -146,8 +148,8 @@ export default function ProjectDetail() {
     });
 
     return () => {
-      // Bersihkan elemen clone (jika diperlukan)
-      while (slider.children.length > 4) {
+      // Bersihkan elemen clone
+      while (slider.children.length > clonesNeeded) {
         slider.removeChild(slider.lastChild);
       }
     };
