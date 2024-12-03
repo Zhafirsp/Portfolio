@@ -191,5 +191,52 @@
         }
       }
     }
+    .info {
+      display: flex;
+      justify-content: space-between;
+      margin: 60vh 30px 1vh;
+      padding: 20px;
+      div {
+        display: flex;
+        gap: 50px;
+        align-items: flex-end;
+        p,
+        h3 {
+          margin: -10px;
+          padding: 2.5px;
+          color: #fffcf2;
+        }
+        .scrollToTop {
+          cursor: pointer;
+          &::after {
+            content: "";
+            width: 0%;
+            height: 1px;
+            background-color: #fffcf2;
+            display: block;
+            margin-top: 2px;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.2s linear;
+          }
+          &:hover {
+            &::after {
+              width: 100%;
+            }
+          }
+        }
+        span {
+          display: flex;
+          flex-direction: column;
+          gap: 15px;
+        }
+        h3 {
+          cursor: default;
+          font-weight: 300;
+          font-size: 1em;
+        }
+      }
+    }
   }
 }

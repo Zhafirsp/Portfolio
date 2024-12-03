@@ -72,7 +72,7 @@ const projects = [
 
 export default function ProjectDetail() {
   const { id } = useParams(); // Ambil ID dari URL
-  const [time, setTime] = useState("");
+  // const [time, setTime] = useState("");
   const sliderProject = useRef(null);
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -87,30 +87,30 @@ export default function ProjectDetail() {
     return <p>404 - Project Not Found</p>; // Tampilkan pesan 404 jika data tidak ada
   }
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth", // Smooth scrolling
-    });
-  };
+  // const scrollToTop = () => {
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: "smooth", // Smooth scrolling
+  //   });
+  // };
 
-  useEffect(() => {
-    const updateTime = () => {
-      const bandungTime = new Intl.DateTimeFormat("en-US", {
-        timeZone: "Asia/Jakarta",
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: true,
-      }).format(new Date());
+  // useEffect(() => {
+  //   const updateTime = () => {
+  //     const bandungTime = new Intl.DateTimeFormat("en-US", {
+  //       timeZone: "Asia/Jakarta",
+  //       hour: "2-digit",
+  //       minute: "2-digit",
+  //       hour12: true,
+  //     }).format(new Date());
 
-      setTime(bandungTime);
-    };
+  //     setTime(bandungTime);
+  //   };
 
-    updateTime(); // Set initial time
-    const interval = setInterval(updateTime, 1000); // Update every second
+  //   updateTime(); // Set initial time
+  //   const interval = setInterval(updateTime, 1000); // Update every second
 
-    return () => clearInterval(interval); // Cleanup on unmount
-  }, []);
+  //   return () => clearInterval(interval); // Cleanup on unmount
+  // }, []);
 
   useLayoutEffect(() => {
     const slider = sliderProject.current;
@@ -273,6 +273,56 @@ export default function ProjectDetail() {
             </div>
           </section>
         </div>
+        {/* <div className={styles.info}>
+          <div>
+            <span>
+              <h3>Copyright:</h3>
+              <p>All Right Reserved ©2024</p>
+            </span>
+            <span>
+              <h3>Location:</h3>
+              <p>Bandung, Indonesia {time}</p>
+            </span>
+            <span>
+              <h3>Fast Travel:</h3>
+              <p className={styles.scrollToTop} onClick={scrollToTop}>
+                Go Back to Top
+              </p>
+            </span>
+          </div>
+          <div>
+            <span>
+              <h3>Socials:</h3>
+              <Magnetic>
+                <a
+                  href="https://www.linkedin.com/in/muhammad-zhafir"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <p>LinkedIn</p>
+                </a>
+              </Magnetic>
+            </span>
+            <Magnetic>
+              <a
+                href="https://www.instagram.com/zhafirsp_"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <p>Instagram</p>
+              </a>
+            </Magnetic>
+            <Magnetic>
+              <a
+                href="https://x.com/iniakunspamm"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <p>Twitter</p>
+              </a>
+            </Magnetic>
+          </div>
+        </div> */}
       </main>
     </>
   );
