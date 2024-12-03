@@ -55,11 +55,11 @@ export default function Contact() {
             </span>
             <h3>Sunandy Pramana</h3>
             <motion.div style={{ x }} className={styles.buttonContainer}>
-              <Rounded backgroundColor={"#eb5e28"} className={styles.button}>
-                <Link href="/Contact">
+              <Link href="/contact">
+                <Rounded backgroundColor={"#eb5e28"} className={styles.button}>
                   <p>Get in touch</p>
-                </Link>
-              </Rounded>
+                </Rounded>
+              </Link>
             </motion.div>
             {/* <motion.svg
             style={{ rotate, scale: 2 }}

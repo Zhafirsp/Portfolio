@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/all";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function PinnedSection() {
+export default function Description() {
   const sectionRef = useRef(null);
 
   useEffect(() => {

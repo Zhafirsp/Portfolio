@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  experimental: {
+    appDir: true, // Aktifkan fitur app directory
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

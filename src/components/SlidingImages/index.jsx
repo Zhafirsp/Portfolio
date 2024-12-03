@@ -26,7 +26,7 @@ const slider1 = [
 const slider2 = [
   {
     color: "#d4e3ec",
-    src: "landing-page.png",
+    src: "homework_gigih.png",
   },
   {
     color: "#e5e0e1",
@@ -38,7 +38,7 @@ const slider2 = [
   },
   {
     color: "#e1dad6",
-    src: "wix.jpg",
+    src: "oz_home1.png",
   },
 ];
 

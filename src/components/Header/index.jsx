@@ -17,10 +17,16 @@ export default function Header() {
   const button = useRef(null);
 
   const getMarginTop = () => {
-    if (pathname === "/Work") return "-10px";
-    if (pathname === "/About") return "3vh";
-    if (pathname === "/Contact") return "-10px";
+    if (pathname === "/work") return "-10px";
+    if (pathname === "/about") return "3vh";
+    if (pathname === "/contact") return "-10px";
     if (pathname === "/") return "3vh";
+    return "0";
+  };
+
+  const getMenuMarginTop = () => {
+    if (pathname === "/work") return "-10vh";
+    if (pathname.startsWith("/projects/")) return "-30vh"; // Sesuaikan menu untuk halaman proyek
     return "0";
   };
 
@@ -60,14 +66,13 @@ export default function Header() {
         className={styles.header}
         style={{
           marginTop: getMarginTop(),
-          // backgroundColor: pathname === "/Contact" ? "#fffcf2" : "#252422", // Change background color for /Contact
         }}
       >
         <Magnetic>
           <Link
             href="/"
             className={`${styles.link} ${
-              pathname === "/Contact" ? styles.contactLink : ""
+              pathname === "/contact" ? styles.contactLink : ""
             }`}
           >
             <div className={styles.logo}>
@@ -83,9 +88,9 @@ export default function Header() {
         <div className={styles.nav}>
           <Magnetic>
             <Link
-              href="/Work"
+              href="/work"
               className={`${styles.link} ${
-                pathname === "/Contact" ? styles.contactLink : ""
+                pathname === "/contact" ? styles.contactLink : ""
               }`}
             >
               <div className={styles.el}>
@@ -96,9 +101,9 @@ export default function Header() {
           </Magnetic>
           <Magnetic>
             <Link
-              href="/About"
+              href="/about"
               className={`${styles.link} ${
-                pathname === "/Contact" ? styles.contactLink : ""
+                pathname === "/contact" ? styles.contactLink : ""
               }`}
             >
               <div className={styles.el}>
@@ -109,9 +114,9 @@ export default function Header() {
           </Magnetic>
           <Magnetic>
             <Link
-              href="/Contact"
+              href="/contact"
               className={`${styles.link} ${
-                pathname === "/Contact" ? styles.contactLink : ""
+                pathname === "/contact" ? styles.contactLink : ""
               }`}
             >
               <div className={styles.el}>
@@ -125,7 +130,7 @@ export default function Header() {
       <div
         ref={button}
         className={styles.headerButtonContainer}
-        style={pathname === "/Work" ? { marginTop: "-10vh" } : {}}
+        style={{ marginTop: getMenuMarginTop() }}
       >
         <Rounded
           onClick={() => {

@@ -2,7 +2,7 @@
 import { useState } from "react";
 import styles from "./page.module.scss";
 import Landing from "../components/Landing";
-import Projects from "../components/Projects";
+import Projects from "./projects";
 import Description from "../components/Description";
 import SlidingImages from "../components/SlidingImages";
 import SliderHeader from "../components/SliderHeader";
