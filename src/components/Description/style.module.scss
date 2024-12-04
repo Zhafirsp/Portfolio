@@ -1,0 +1,27 @@
+.pinnedSection {
+  height: 100vh; // Full viewport height for the pinned section
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  background-color: #252422;
+  color: #fffcf2;
+
+  .phrase {
+    position: absolute; // Overlap phrases on top of each other
+    font-size: 65px;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0; // Start hidden
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); // Centers the text
+  }
+
+  .phrase:first-of-type {
+    opacity: 1; // First phrase visible initially
+    transform: translateY(0);
+  }
+}

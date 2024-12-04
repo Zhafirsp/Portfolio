@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
+
+.transitionOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10; /* Ensure this is above the footer and all page content */
+}
+
+.pageContent {
+  position: relative;
+  z-index: 1; /* Konten berada di atas transisi */
+}
+
+.logoContainer {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+/* Refined Handwriting Animation */
+@keyframes handwriting {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.handwrittenText {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden; /* Hide overflow */
+  font-family: "Dancing Script", cursive; /* Example of a handwritten font */
+  font-size: 48px;
+  color: #fffcf2;
+  font-weight: bold;
+  border-right: 2px solid #403d39; /* Simulate typing cursor */
+  animation: handwriting 1.5s steps(7) 1s forwards; // Tulisan selesai dalam 3 detik
+}
