@@ -6,19 +6,20 @@
   .title {
     font-size: 134px;
     text-align: center;
+    font-weight: 400;
   }
 
   .detail {
     display: flex;
     justify-content: space-evenly;
     p {
-      font-size: 11px;
+      font-size: 14px;
       color: #ccc5b9;
     }
     span {
       display: grid;
       border-top: 1px solid #ccc5b9;
-      font-size: 19px;
+      font-size: 17px;
       margin: 20px 0px;
       padding-top: 20px;
       color: #000;
@@ -76,7 +77,7 @@
   .circleContainer {
     position: relative;
     .circle {
-      height: 2550%;
+      height: 2100%;
       width: 120%;
       margin-top: -15vh;
       left: -10%;

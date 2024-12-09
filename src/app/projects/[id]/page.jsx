@@ -6,69 +6,8 @@ import Image from "next/image";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import projects from "../../../data/projectsData";
 import Magnetic from "../../../common/Magnetic";
-
-const projects = [
-  {
-    id: 1, // Add unique id for each project
-    title: "San Project",
-    location: "Bandung, Indonesia",
-    service: "Design & Development",
-    year: "2021",
-    src: "/images/san_project.png",
-    credit: "San Project Team",
-    video1: "/videos/sanproject_home.mp4",
-    video2: "/videos/sanproject_about.mp4",
-  },
-  {
-    id: 2,
-    title: "Readly",
-    location: "Bogor, Indonesia",
-    service: "Design & Development",
-    year: "2022",
-    src: "/images/readly.png",
-    credit: "Readly Team",
-    video1: "/videos/readly_homepage.mp4",
-    video2: "/videos/readly_about.mp4",
-    video3: "/videos/readly_readpage.mp4",
-    video4: "/videos/readly_countpage.mp4",
-  },
-  {
-    id: 3,
-    title: "Homework Gigih",
-    location: "Bogor, Indonesia",
-    service: "Design & Development",
-    year: "2022",
-    src: "/images/homework_gigih.png",
-    credit: "Muhammad Zhafir",
-    video1: "/videos/homework_gigih.mp4",
-  },
-  {
-    id: 4,
-    title: "OZ Project Prototype 1",
-    location: "Bandung, Indonesia",
-    service: "Design & Development",
-    year: "2024",
-    src: "/images/oz_home1.png",
-    credit: "Zhafir, Fahri & Riffi",
-    video1: "/videos/oz_home1_homepage.mp4",
-    video2: "/videos/oz_home1_newspage.mp4",
-    video3: "/videos/oz_home1_eventpage.mp4",
-  },
-  {
-    id: 5,
-    title: "OZ Project Prototype 2",
-    location: "Bandung, Indonesia",
-    service: "Design & Development",
-    year: "2024",
-    src: "/images/oz.png",
-    credit: "Zhafir, Fahri, Teguh",
-    video1: "/videos/oz_home2_homepage.mp4",
-    video2: "/videos/oz_home2_newspage.mp4",
-    video3: "/videos/oz_home2_eventpage.mp4",
-    video4: "/videos/oz_home2_about.mp4",
-  },
-];
 
 export default function ProjectDetail() {
   const { id } = useParams(); // Ambil ID dari URL
@@ -83,47 +22,6 @@ export default function ProjectDetail() {
 
   const project = projects.find((p) => p.id === parseInt(id));
 
-  useLayoutEffect(() => {
-    const slider = sliderProject.current;
-
-    if (!slider) return; // Early exit if the slider is not available
-
-    const screenWidth = window.innerWidth;
-    const elementWidth = slider.children[0]?.offsetWidth;
-
-    if (!elementWidth) return; // Ensure the element has a valid width
-
-    const clonesNeeded = Math.ceil(screenWidth / elementWidth);
-
-    // Clone elements to fill the screen
-    Array.from({ length: clonesNeeded }).forEach(() => {
-      Array.from(slider.children).forEach((child) => {
-        slider.appendChild(child.cloneNode(true));
-      });
-    });
-
-    const totalWidth = slider.scrollWidth;
-
-    // Set initial position for GSAP animation
-    gsap.set(slider, { x: 0 });
-
-    // GSAP animation for infinite scrolling
-    gsap.to(slider, {
-      x: `-=${totalWidth / 2}px`,
-      duration: totalWidth / 100,
-      ease: "linear",
-      repeat: -1,
-    });
-
-    return () => {
-      // Cleanup cloned elements
-      while (slider.children.length > clonesNeeded) {
-        slider.removeChild(slider.lastChild);
-      }
-    };
-  }, []);
-
-  
   if (!project) {
     return <p>404 - Project Not Found</p>; // Tampilkan pesan 404 jika data tidak ada
   }
@@ -153,6 +51,49 @@ export default function ProjectDetail() {
   //   return () => clearInterval(interval); // Cleanup on unmount
   // }, []);
 
+  useLayoutEffect(() => {
+    if (!sliderProject.current) return;
+
+    const slider = sliderProject.current;
+
+    // Dapatkan lebar layar dan lebar satu elemen teks
+    const screenWidth = window.innerWidth;
+    const elementWidth = slider.children[0]?.offsetWidth;
+
+    if (!elementWidth) return; // Pastikan elemen memiliki lebar yang valid
+
+    // Hitung jumlah elemen yang dibutuhkan untuk memenuhi layar
+    const clonesNeeded = Math.ceil(screenWidth / elementWidth);
+
+    // Clone elemen hingga memenuhi layar
+    for (let i = 0; i < clonesNeeded; i++) {
+      Array.from(slider.children).forEach((child) => {
+        slider.appendChild(child.cloneNode(true));
+      });
+    }
+
+    // Total panjang elemen setelah cloning
+    const totalWidth = slider.scrollWidth;
+
+    // Set ulang posisi slider untuk animasi loop
+    gsap.set(slider, { x: 0 });
+
+    // Animasi GSAP tanpa jeda
+    gsap.to(slider, {
+      x: `-=${totalWidth / 2}px`, // Geser setengah panjang total
+      duration: totalWidth / 100, // Durasi animasi sesuai panjang teks
+      ease: "linear", // Gerakan linear untuk animasi mulus
+      repeat: -1, // Loop tak terbatas
+    });
+
+    return () => {
+      // Bersihkan elemen clone
+      while (slider.children.length > clonesNeeded) {
+        slider.removeChild(slider.lastChild);
+      }
+    };
+  }, []);
+
   return (
     <>
       <main className={styles.project}>
@@ -165,20 +106,22 @@ export default function ProjectDetail() {
             Credits <span>{project.credit}</span>
           </p>
           <p>
-            Location & Year{" "}
+            Location & Year
             <span>
-              {project.location}
-              {project.year}
+              {project.location} &copy; {project.year}
             </span>
           </p>
         </div>
         <div className={styles.image}>
-          <Rounded backgroundColor={"#eb5e28"} className={styles.button}>
-            <p>See Live</p>
-          </Rounded>
+          <a href={project.link} target="_blank">
+            <Rounded backgroundColor={"#eb5e28"} className={styles.button}>
+              <p>See Live</p>
+            </Rounded>
+          </a>
           <Image
             src={project.src}
             alt={project.title}
+            id={project.id}
             layout="responsive"
             width={500} // Adjust as needed
             height={500} // Adjust as needed

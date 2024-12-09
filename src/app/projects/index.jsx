@@ -3,58 +3,13 @@ import styles from "./style.module.scss";
 import { useState, useEffect, useRef } from "react";
 import Project from "../../components/project";
 import { motion } from "framer-motion";
+import projects from "../../data/projectsData";
 import gsap from "gsap";
 import Image from "next/image";
 import Rounded from "../../common/RoundedButton";
 import Link from "next/link";
-
-const projects = [
-  {
-    id: 1, // Add unique id for each project
-    title: "San Project",
-    location: "Bandung, Indonesia",
-    service: "Design & Development",
-    year: "2021",
-    src: "san_project.png",
-    color: "#000000",
-  },
-  {
-    id: 2,
-    title: "Readly",
-    location: "Bogor, Indonesia",
-    service: "Design & Development",
-    year: "2022",
-    src: "readly.png",
-    color: "#8C8C8C",
-  },
-  {
-    id: 3,
-    title: "Homework Gigih",
-    location: "Bogor, Indonesia",
-    service: "Design & Development",
-    year: "2022",
-    src: "homework_gigih.png",
-    color: "#EFE8D3",
-  },
-  {
-    id: 4,
-    title: "OZ Project Prototype 1",
-    location: "Bandung, Indonesia",
-    service: "Design & Development",
-    year: "2024",
-    src: "oz_home1.png",
-    color: "#706D63",
-  },
-  {
-    id: 5,
-    title: "OZ Project Prototype 2",
-    location: "Bandung, Indonesia",
-    service: "Design & Development",
-    year: "2024",
-    src: "oz.png",
-    color: "#EFE8D3",
-  },
-];
+// import { HiOutlineQueueList } from "react-icons/hi2";
+// import { SlGrid } from "react-icons/sl";
 
 const scaleAnimation = {
   initial: { scale: 0, x: "-50%", y: "-50%" },
@@ -78,7 +33,7 @@ export default function Projects() {
   const modalContainer = useRef(null);
   const cursor = useRef(null);
   const cursorLabel = useRef(null);
-
+  const [visibleProjects, setVisibleProjects] = useState([]); // For the displayed projects
   const [isClient, setIsClient] = useState(false); // To ensure the code runs only on the client side
   // const [isMenuOpen, setIsMenuOpen] = useState(false); // This state toggles the menu
   // const [activeView, setActiveView] = useState("list"); // Default set to 'list' view
@@ -138,6 +93,23 @@ export default function Projects() {
     setIsClient(true); // This will be true only after the component mounts
   }, []);
 
+  useEffect(() => {
+    if (isClient) {
+      const currentPath = window.location.pathname;
+
+      // Sort projects by year (descending)
+      const sortedProjects = [...projects].sort((a, b) => b.year - a.year);
+
+      if (currentPath === "/") {
+        // Show only 3 projects on the homepage
+        setVisibleProjects(sortedProjects.slice(0, 4));
+      } else if (currentPath === "/work") {
+        // Show all projects on the /work page
+        setVisibleProjects(sortedProjects);
+      }
+    }
+  }, [isClient]);
+
   const moveItems = (x, y) => {
     xMoveContainer.current(x);
     yMoveContainer.current(y);
@@ -173,11 +145,10 @@ export default function Projects() {
             </p>
           </Rounded>
         </div> */}
-
-        {/* <div
+        {/* 
+        <div
           className={activeView === "grid" ? styles.gridView : styles.listView}
         > */}
-
         {/* <div> */}
         <table>
           <thead>
@@ -189,7 +160,7 @@ export default function Projects() {
             </tr>
           </thead>
           <tbody>
-            {projects.map((project, index) => (
+            {visibleProjects.map((project, index) => (
               <Project
                 key={project.id} // Using project.id as the key
                 index={index}
@@ -203,9 +174,9 @@ export default function Projects() {
             ))}
           </tbody>
         </table>
-
-        {/* </div> */}
       </div>
+      {/* </div> */}
+      {/* </div> */}
 
       {/* Conditionally render the Rounded component for "More Work" */}
       {isClient && window.location.pathname !== "/work" && (
@@ -228,7 +199,7 @@ export default function Projects() {
             style={{ top: index * -100 + "%" }}
             className={styles.modalSlider}
           >
-            {projects.map((project, index) => {
+            {visibleProjects.map((project, index) => {
               const { src, color } = project;
               return (
                 <div
@@ -236,12 +207,7 @@ export default function Projects() {
                   style={{ backgroundColor: color }}
                   key={`modal_${index}`}
                 >
-                  <Image
-                    src={`/images/${src}`}
-                    width={300}
-                    height={0}
-                    alt="image"
-                  />
+                  <Image src={`${src}`} width={300} height={0} alt="image" />
                 </div>
               );
             })}
