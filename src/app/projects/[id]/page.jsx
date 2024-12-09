@@ -22,35 +22,6 @@ export default function ProjectDetail() {
 
   const project = projects.find((p) => p.id === parseInt(id));
 
-  if (!project) {
-    return <p>404 - Project Not Found</p>; // Tampilkan pesan 404 jika data tidak ada
-  }
-
-  // const scrollToTop = () => {
-  //   window.scrollTo({
-  //     top: 0,
-  //     behavior: "smooth", // Smooth scrolling
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   const updateTime = () => {
-  //     const bandungTime = new Intl.DateTimeFormat("en-US", {
-  //       timeZone: "Asia/Jakarta",
-  //       hour: "2-digit",
-  //       minute: "2-digit",
-  //       hour12: true,
-  //     }).format(new Date());
-
-  //     setTime(bandungTime);
-  //   };
-
-  //   updateTime(); // Set initial time
-  //   const interval = setInterval(updateTime, 1000); // Update every second
-
-  //   return () => clearInterval(interval); // Cleanup on unmount
-  // }, []);
-
   useLayoutEffect(() => {
     if (!sliderProject.current) return;
 
@@ -94,9 +65,38 @@ export default function ProjectDetail() {
     };
   }, []);
 
+  if (!project) {
+    return <p>404 - Project Not Found</p>; // Tampilkan pesan 404 jika data tidak ada
+  }
+
+  // const scrollToTop = () => {
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: "smooth", // Smooth scrolling
+  //   });
+  // };
+
+  // useEffect(() => {
+  //   const updateTime = () => {
+  //     const bandungTime = new Intl.DateTimeFormat("en-US", {
+  //       timeZone: "Asia/Jakarta",
+  //       hour: "2-digit",
+  //       minute: "2-digit",
+  //       hour12: true,
+  //     }).format(new Date());
+
+  //     setTime(bandungTime);
+  //   };
+
+  //   updateTime(); // Set initial time
+  //   const interval = setInterval(updateTime, 1000); // Update every second
+
+  //   return () => clearInterval(interval); // Cleanup on unmount
+  // }, []);
+
   return (
     <>
-      <main className={styles.project}>
+      <main className={styles.project} ref={container}>
         <h1 className={styles.title}>{project.title}</h1>
         <div className={styles.detail}>
           <p>
