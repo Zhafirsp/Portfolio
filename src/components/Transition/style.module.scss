@@ -1,4 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
+@font-face {
+  font-family: "Dancing";
+  src: url("../../../public/fonts/Dancing.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
 
 .transitionOverlay {
   position: fixed;
@@ -37,7 +42,7 @@
   display: inline-block;
   white-space: nowrap;
   overflow: hidden; /* Hide overflow */
-  font-family: "Dancing Script", sans-serif;
+  font-family: "Dancing", serif !important;
   font-size: 48px;
   color: #fffcf2;
   font-weight: bold;
